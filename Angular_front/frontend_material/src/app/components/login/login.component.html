@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="body">
+    <div class="login">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+            <h1 style="text-align: center;">Login</h1>
+            <img src="../../../assets/img/usuario.png" width="50%">
+        
+            <mat-form-field class="ancho">
+                <mat-label>Usuario</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="username">
+            </mat-form-field>
+            <mat-form-field class="ancho">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput autocomplete="off" formControlName="password">
+            </mat-form-field>
+            <br>
+            <button type="submit" class="ancho button" mat-raised-button color="primary" >Iniciar Sesion</button>
+        </form>
+        <div>
+           <button  class="ancho button"mat-raised-button color="primary" routerLink="/signup">Registrar Usuario</button>
+        </div>
+
+    </div>
+</div>

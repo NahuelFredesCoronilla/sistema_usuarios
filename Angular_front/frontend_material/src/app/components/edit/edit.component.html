@@ -1,0 +1,41 @@
+
+<div class="body">
+    <div class="login">
+       
+        
+        <form [formGroup]="form" (ngSubmit)="update()" novalidate>
+            <h1 >Modificar usuario</h1>
+            <img  src="../../../assets/img/usuario.png" width="50%">
+            <mat-form-field>
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username" />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput  formControlName="firstname" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Apellido</mat-label>
+                <input matInput  formControlName="lastname" />
+              </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password"/>  
+                       
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="confirmPassword"/>  
+                         
+              </mat-form-field>
+            <br>
+            <button color="accent"  [disabled]="" mat-raised-button type="submit">
+              <span>Actualizar</span>
+            </button>
+          </form>
+        <div>
+            <a routerLink="/dashboard">Volver</a>
+        </div>
+    </div>
+</div>
+
