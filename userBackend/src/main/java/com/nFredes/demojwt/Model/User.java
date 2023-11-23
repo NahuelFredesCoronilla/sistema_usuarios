@@ -1,4 +1,4 @@
-package com.nFredes.demojwt.User;
+package com.nFredes.demojwt.Model;
 
 import java.util.Collection;
 import java.util.List;

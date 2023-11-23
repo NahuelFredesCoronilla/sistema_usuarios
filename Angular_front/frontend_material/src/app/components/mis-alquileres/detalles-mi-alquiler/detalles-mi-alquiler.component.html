@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="detalles-alquiler">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Detalles del Alquiler {{ alquiler?.id ||0}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="detalle">
+                <strong>Nombre del locatario: </strong>
+                <span>{{ alquiler?.user?.firstname}}</span>
+            </div>
+            <div class="detalle">
+                <strong>Apellido del locatario: </strong>
+                <span>{{ alquiler?.user?.lastname}}</span>
+            </div>
+            <div class="detalle">
+                <strong>Nombre de usuario: </strong>
+                <span>{{ alquiler?.user?.username }}</span>
+            </div>
+            <div class="detalle">
+                <strong>Fecha de Inicio:</strong>
+                <span>{{ alquiler?.fechaInicio | date }}</span>
+            </div>
+           
+
+            <div class="detalle">
+                <strong>Duración (días):</strong>
+                <span>{{ alquiler?.duracion }}</span>
+            </div>
+            <div class="detalle">
+                <strong>Valor de alquiler total:</strong>
+                <span>${{ alquiler?.valorAlquilerTotal }}</span>
+            </div>
+        </mat-card-content>
+            <mat-card-header>
+                <mat-card-title>Detalles de la maquinaria alquilada </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+            <div class="detalle">
+                <strong>Anio: </strong>
+                <span>{{ alquiler?.maquinaria?.anio }}</span>
+            </div>
+            <div class="detalle">
+                <strong>Marca: </strong>
+                <span>{{ alquiler?.maquinaria?.marca }}</span>
+            </div>
+            <div class="detalle">
+                <strong>Modelo: </strong>
+                <span>{{ alquiler?.maquinaria?.modelo}}</span>
+            </div>
+            <div class="detalle">
+                <strong>Patente: </strong>
+                <span>{{ alquiler?.maquinaria?.patente }}</span>
+            </div>
+            <div class="detalle">
+                <strong>Tipo: </strong>
+                <span>{{ alquiler?.maquinaria?.tipo }}</span>
+            </div>
+        </mat-card-content>
+            
+        
+
+        
+    </mat-card>
+</div>

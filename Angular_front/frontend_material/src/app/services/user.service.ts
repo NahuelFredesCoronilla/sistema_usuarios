@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -8,18 +8,24 @@ import { User } from '../interfaces/user';
 })
 export class UserService {
   //traer lista
-  private API_SERVER_GET= "http://localhost:8080/user/traer";
+  private API_SERVER_GET = "http://localhost:8080/user/traer";
 
   //traer uno
-  private API_SERVER_GET_ONE= "http://localhost:8080/user";
-  
+  private API_SERVER_GET_ONE = "http://localhost:8080/user/traer/";
+
   //borrar 
-  private API_SERVER_DELETE= "http://localhost:8080/user/borrar";
+  private API_SERVER_DELETE = "http://localhost:8080/user/borrar";
 
   //editar
-  private API_SERVER_UPDATE= "http://localhost:8080/user/editar";
+  private API_SERVER_UPDATE = "http://localhost:8080/user/editar";
 
-  private DEMO="http://localhost:8080/api/v1/demo"
+  //traer id logueado
+  private API_SERVER_GET_LOGED = "http://localhost:8080/user/current-id";
+
+  //editar propio
+  private API_SERVER_UPDATE_LOGED = "http://localhost:8080/user/edita/current"
+
+
 
   constructor(
     private httpClient: HttpClient
@@ -29,26 +35,54 @@ export class UserService {
     return this.httpClient.get(this.API_SERVER_GET)
       .pipe(catchError(this.handleError));
   }
-  
-  
-  public deleteUsuario(id:any):Observable<any>{
-    return this.httpClient.delete(this.API_SERVER_DELETE+"/"+id);
+
+  public getUsuario(id:any): Observable<any>{
+    return this.httpClient.get(this.API_SERVER_GET_ONE+id)
+  }
+
+  public deleteUsuario(id: any): Observable<any> {
+    return this.httpClient.delete(this.API_SERVER_DELETE + "/" + id)
+      .pipe(catchError(this.handleError));
   }
 
   getUser(id: number) {
-    return this.httpClient.get(`${this.API_SERVER_GET_ONE}/traer/${id}`);
+    return this.httpClient.get(`${this.API_SERVER_GET_ONE}${id}`)
+      .pipe(catchError(this.handleError));
   }
 
- 
+
   updateUsuario(user: any) {
-    const url = `${this.API_SERVER_UPDATE}/${user.id}`; 
-    return this.httpClient.put(url, user);  
+    const url = `${this.API_SERVER_UPDATE}/${user.id}`;
+    return this.httpClient.put(url, user)
+      .pipe(catchError(this.handleError));
   }
 
-  public demo(): Observable<any> {
-    return this.httpClient.post(this.DEMO, null); 
+  getCurrentUserId(): Observable<number> {
+    return this.httpClient.get<any>(this.API_SERVER_GET_LOGED).pipe(
+      map(response => {
+
+        const userId = Number(response);
+
+
+        if (!isNaN(userId)) {
+          return userId;
+        } else {
+
+          console.error('No se pudo convertir a número:', response);
+          throw new Error('No se pudo obtener el ID del usuario.');
+        }
+      })
+    );
   }
-  
+
+
+  updateCurrentUser(user: User): Observable<User> {
+    const url = (this.API_SERVER_UPDATE_LOGED);
+    return this.httpClient.put<User>(url, user);
+  }
+
+
+
   private handleError(error: HttpErrorResponse) {
     console.error('Error de solicitud:', error);
     if (error.error instanceof ErrorEvent) {
@@ -60,7 +94,7 @@ export class UserService {
     }
     // Retorna un observable con un mensaje de error personalizado
     return throwError('Algo salió mal; por favor, inténtalo de nuevo más tarde.');
-}
+  }
 
 
 }

@@ -49,10 +49,10 @@
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let user">
                   
-                  <button *ngIf="isAdmin" class="btn-acciones" mat-fab color="warn" (click)="eliminar(user)">
+                  <button  class="btn-acciones" mat-fab color="warn" (click)="eliminar(user)">
                     <mat-icon>delete</mat-icon>
                   </button>
-                  <button *ngIf="isAdmin" class="btn-acciones" mat-fab color="primary"routerLink="/edit/{{ user.id }}" >
+                  <button class="btn-acciones" mat-fab color="primary"routerLink="/edit/{{ user.id }}" >
                     <mat-icon>edit</mat-icon>
                   </button>
                     
@@ -65,8 +65,4 @@
     </div>
 </div>
 
-<!--<mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput  placeholder="Ex. ium" #input>
-</mat-form-field>
--->
+

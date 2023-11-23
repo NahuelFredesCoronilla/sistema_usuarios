@@ -7,12 +7,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.nFredes.demojwt.Jwt.JwtService;
-import com.nFredes.demojwt.User.Role;
-import com.nFredes.demojwt.User.User;
+import com.nFredes.demojwt.Model.Role;
+import com.nFredes.demojwt.Model.User;
 import com.nFredes.demojwt.repository.UserRepository;
 import java.util.Date;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Service
 @RequiredArgsConstructor
@@ -49,6 +51,16 @@ public class AuthService {
             .token(jwtService.getToken(user))
             .build();
         
+    }
+    public Integer getCurrentUserId() {
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User) {
+            User usuarioAutenticado = (User) authentication.getPrincipal();
+            return usuarioAutenticado.getId();
+        }
+
+        return null;
     }
 
 }

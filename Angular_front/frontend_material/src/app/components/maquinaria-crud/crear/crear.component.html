@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <mat-toolbar style="align-items: center">
+        
+    </mat-toolbar>
+    <div class="body">
+        <div class="login">
+           
+            
+            <form [formGroup]="form" (ngSubmit)="crear_maquinaria()" novalidate>
+                
+              <h2 >Añadir nueva maquinaria</h2>
+                <mat-form-field>
+                  <mat-label>Marca</mat-label>
+                  <input matInput formControlName="marca" />
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Modelo</mat-label>
+                  <input matInput  formControlName="modelo" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Patente</mat-label>
+                    <input matInput  formControlName="patente" />
+                  </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Tipo</mat-label>
+                  <input matInput  formControlName="tipo"/>  
+                           
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Capacidad</mat-label>
+                    <input matInput formControlName="capacidad"/>  
+                             
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Año</mat-label>
+                    <input matInput  formControlName="anio"/>  
+                             
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Precio por hora</mat-label>
+                    <input matInput  formControlName="precio"/>                              
+                  </mat-form-field>
+                <br>
+                <button color="accent"  [disabled]="" mat-raised-button type="submit">
+                  <span>Añadir </span>
+                </button>
+              </form>
+            <div>
+                <a routerLink="/dashboard">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>

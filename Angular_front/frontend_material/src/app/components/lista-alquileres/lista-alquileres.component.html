@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<div class="formularioRegistro">
+    <br>
+    <mat-toolbar>
+        <h2 class="titulo">Listado de alquileres</h2>
+        <div class="spacer-elementos"></div>
+
+    </mat-toolbar>
+
+    <div class="table-responsive">
+        <mat-form-field>
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+
+        </mat-form-field>
+        
+        <button mat-button (click)="applyFilter2(true)">Activos</button>
+        <button mat-button (click)="applyFilter2(false)">Finalizados</button>
+        <hr>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let alquileres"> {{alquileres.id}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="tipo">
+                <th mat-header-cell *matHeaderCellDef> Tipo de maquinaria </th>
+                <td mat-cell *matCellDef="let alquiler"> {{ alquiler.maquinaria.tipo }} </td>
+            </ng-container>
+            <ng-container matColumnDef="modelo">
+                <th mat-header-cell *matHeaderCellDef> Modelo</th>
+                <td mat-cell *matCellDef="let alquiler"> {{ alquiler.maquinaria.marca +" "+alquiler.maquinaria.modelo }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaInicio">
+                <th mat-header-cell *matHeaderCellDef> Fecha de Inicio </th>
+                <td mat-cell *matCellDef="let alquiler"> {{ alquiler.fechaInicio | date }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="duracion">
+                <th mat-header-cell *matHeaderCellDef> Duración (días) </th>
+                <td mat-cell *matCellDef="let alquiler"> {{ alquiler.duracion }} </td>
+            </ng-container>
+            <ng-container matColumnDef="valorAlquilerTotal">
+                <th mat-header-cell *matHeaderCellDef> Precio Total</th>
+                <td mat-cell *matCellDef="let alquiler"> ${{ alquiler.valorAlquilerTotal }} </td>
+            </ng-container>
+            <ng-container matColumnDef="activo">
+                <th mat-header-cell *matHeaderCellDef> activo </th>
+                <td mat-cell *matCellDef="let alquileres"> {{alquileres.activo? 'si':'no'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let alquiler">
+
+                    <button [routerLink]="['/detalles_mi_alquiler', alquiler.id]" mat-raised-button
+                        color="primary">Detalles</button>
+
+
+
+                </td>
+            </ng-container>
+            <tr mat-header-row
+                *matHeaderRowDef="['id', 'tipo','modelo', 'fechaInicio', 'duracion','valorAlquilerTotal','activo','acciones']">
+            </tr>
+            <tr mat-row
+                *matRowDef="let row; columns: ['id','tipo','modelo', 'fechaInicio', 'duracion','valorAlquilerTotal','activo','acciones']">
+            </tr>
+
+        </table>
+        <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
+
+    </div>
+</div>

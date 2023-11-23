@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="body">
+    <div class="login">
+
+      <h2 style="margin-top: 30px;">Alquilar Maquinaria</h2>
+      <h3>Datos de la maquinaria:</h3>
+      <span *ngIf="maquinaria">{{'marca: ' + maquinaria.marca}}</span>
+      <hr *ngIf="maquinaria">
+      <span *ngIf="maquinaria">{{'modelo: ' + maquinaria.modelo}}</span>
+      <hr *ngIf="maquinaria">
+      <span *ngIf="maquinaria">{{'patente: ' + maquinaria.patente}}</span>
+      <hr *ngIf="maquinaria">
+      <span *ngIf="maquinaria">{{'tipo: ' + maquinaria.tipo}}</span>
+      <hr *ngIf="maquinaria">
+      <span *ngIf="maquinaria">{{'Capacidad: ' + maquinaria.capacidad}}</span>
+      <hr *ngIf="maquinaria">
+
+
+      <mat-form-field>
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="solicitud.fechaInicio">
+        
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+
+     
+      <mat-form-field>
+        <mat-label for="duracion">Duracion en dias :</mat-label>
+        <input matInput type="text" id="duracion" [(ngModel)]="solicitud.duracion" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="valorPorDia">Valor por dia </mat-label>
+        <input matInput type="text" id="valorPorDia" [(ngModel)]="solicitud.valorPorDia" />
+      </mat-form-field>
+      <div>
+        <h4>total en pesos: $ {{(+solicitud.duracion||0) * (+solicitud.valorPorDia||0)}}</h4>
+      </div>
+
+
+      <div>
+        <button color="accent" mat-raised-button type="submit" (click)="solicitarAlquiler()">Solicitar
+          Alquiler</button>
+      </div>
+
+    </div>
+  </div>
+</div>

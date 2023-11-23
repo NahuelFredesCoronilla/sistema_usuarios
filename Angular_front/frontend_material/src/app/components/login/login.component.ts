@@ -41,7 +41,7 @@ isLogoutDisabled: boolean = false;
 
     this.authService.login(this.loginForm.value).subscribe({
       next:(response)=>{
-        console.log(response);
+       
         
         //almaceno el token en el localstorage
         const token= response.token;
@@ -50,13 +50,20 @@ isLogoutDisabled: boolean = false;
         this.isLogoutDisabled = true; 
         localStorage.setItem('isLogoutDisabled', JSON.stringify(this.isLogoutDisabled));
        
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/maquinaria');
         
       },
 
       error:(e:HttpErrorResponse)=>{
-        this.errorService.msjError(e);
+      
+      
+        this.snackBar.open('Los datos ingresados son incorrectos', 'Cerrar', {
+          duration: 3000, // Duración del mensaje en milisegundos (3 segundos en este caso)
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
       }
+      
     })
     
   }

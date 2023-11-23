@@ -1,4 +1,4 @@
-package com.nFredes.demojwt.User;
+package com.nFredes.demojwt.Model;
 
 public enum Role {
     ADMIN,

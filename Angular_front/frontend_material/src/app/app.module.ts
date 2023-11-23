@@ -14,6 +14,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 //componentes
 
@@ -25,8 +28,15 @@ import { AuthService } from './services/Auth.service';
 import { InterceptorService } from './services/interceptor.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditComponent } from './components/edit/edit.component';
-
-
+import { MaquinariaCrudComponent } from './components/maquinaria-crud/maquinaria-crud.component';
+import { CrearComponent } from './components/maquinaria-crud/crear/crear.component';
+import { EditMaquinariaComponent } from './components/maquinaria-crud/edit-maquinaria/edit-maquinaria.component';
+import { AlquilarMaquinariaComponent } from './components/maquinaria-crud/alquilar-maquinaria/alquilar-maquinaria.component';
+import { MisAlquileresComponent } from './components/mis-alquileres/mis-alquileres.component';
+import { DetallesMiAlquilerComponent } from './components/mis-alquileres/detalles-mi-alquiler/detalles-mi-alquiler.component';
+import {MatCardModule} from '@angular/material/card';
+import { ListaAlquileresComponent } from './components/lista-alquileres/lista-alquileres.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -41,6 +51,14 @@ import { EditComponent } from './components/edit/edit.component';
     NavbarComponent,
     DashboardComponent,
     EditComponent,
+    MaquinariaCrudComponent,
+    CrearComponent,
+    EditMaquinariaComponent,
+    AlquilarMaquinariaComponent,
+    MisAlquileresComponent,
+    DetallesMiAlquilerComponent,
+    ListaAlquileresComponent,
+    
    
     
     
@@ -62,7 +80,11 @@ import { EditComponent } from './components/edit/edit.component';
     MatSnackBarModule,
     MatToolbarModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+    MatPaginatorModule
     
     
   ],

@@ -10,8 +10,13 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.nFredes.demojwt.Jwt.JwtAuthenticationFilter;
+import com.nFredes.demojwt.Model.User;
+import com.nFredes.demojwt.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -23,6 +28,7 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final AuthenticationProvider authProvider;
+   
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
@@ -35,9 +41,13 @@ public class SecurityConfig {
                 .disable())
             .authorizeHttpRequests(authRequest ->
               authRequest
+                
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/user/borrar/**").hasAuthority("ADMIN")
-                .requestMatchers("/user/editar/**").hasAuthority("ADMIN")       
+                .requestMatchers("/user/editar/**").hasAuthority("ADMIN")
+                .requestMatchers("/maquinaria/editar/**").hasAuthority("ADMIN")
+                .requestMatchers("/maquinaria/crear/**").hasAuthority("ADMIN")
+                .requestMatchers("/maquinaria/borrar/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 )
             .sessionManagement(sessionManager->

@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
     error =>{console.error(error)}
 
     );
-    this.getRol(402);
+    
     
   }
 
@@ -67,20 +67,7 @@ refreshUserList() {
 }
 
 
-getRol(id: number) {
-  this.userService.getUser(id).subscribe((data: any) => {
-    this.user = data as User;
-    this.rol = this.user.role;
-    
-    this.darPermisos(); // Llamar a darPermisos dentro del bloque de suscripción
-  });
-}
-darPermisos(){
-  if(this.rol==='ADMIN'){
-    this.isAdmin=true;
-  }
 
-}
 
 
 

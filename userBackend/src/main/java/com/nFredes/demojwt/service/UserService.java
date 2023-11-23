@@ -1,9 +1,10 @@
 
 package com.nFredes.demojwt.service;
 
-import com.nFredes.demojwt.User.User;
+import com.nFredes.demojwt.Model.User;
 import com.nFredes.demojwt.repository.UserRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,10 @@ public class UserService {
     public User findUser(Integer id) {
     User usuario = userRepository.findById(id).orElse(null);
     return usuario;
+    }
+    
+     public Optional<User> findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     public ResponseEntity<User> updateUser(Integer id, User updatedUser) {
