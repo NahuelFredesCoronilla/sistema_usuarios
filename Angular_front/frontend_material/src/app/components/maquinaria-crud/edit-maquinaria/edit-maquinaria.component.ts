@@ -73,12 +73,12 @@ export class EditMaquinariaComponent {
         .updateMaquinaria(this.id, updatedMaquinaria).subscribe(
           (response) => {
             console.log('Maquinaria actualizada con éxito:', response);
-            this.snackBar.open("maquinaria actualizada con exito");
+            this.snackBar.open("maquinaria actualizada con exito", '', { duration: 5000 });
             this.router.navigate(['maquinaria']);
           },
           (error) => {
             console.error('Error al actualizar la maquinaria:', error);
-            this.snackBar.open("Error al añadir maquinaria");
+            this.snackBar.open("Error al añadir maquinaria", 'Error', { duration: 5000 });
           }
         );
     }

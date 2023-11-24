@@ -12,3 +12,7 @@
     font-size: 14px;
     width: 100%;
   }
+  .fechas-ocupadas {
+    background-color: red;  /* O el estilo que desees */
+    color: white;
+}

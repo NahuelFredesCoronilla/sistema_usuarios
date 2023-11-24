@@ -37,6 +37,11 @@ import { DetallesMiAlquilerComponent } from './components/mis-alquileres/detalle
 import {MatCardModule} from '@angular/material/card';
 import { ListaAlquileresComponent } from './components/lista-alquileres/lista-alquileres.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgChartsModule } from 'ng2-charts';
+import { GraficoDuracionComponent } from './components/lista-alquileres/grafico-duracion/grafico-duracion.component';
+
+
 
 
 
@@ -58,6 +63,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MisAlquileresComponent,
     DetallesMiAlquilerComponent,
     ListaAlquileresComponent,
+    GraficoDuracionComponent
+    
     
    
     
@@ -84,8 +91,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    NgxChartsModule,
+    NgChartsModule
     
   ],
   providers: [AuthService,

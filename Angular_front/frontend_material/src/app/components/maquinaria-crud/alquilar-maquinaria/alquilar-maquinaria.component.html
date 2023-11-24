@@ -19,12 +19,16 @@
 
 
       <mat-form-field>
-        <mat-label>Fecha de inicio</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="solicitud.fechaInicio">
-        
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <label>Fecha de inicio
+          <input matInput [matDatepicker]="picker" [(ngModel)]="solicitud.fechaInicio" [matDatepickerFilter]="filtroFechas">
+        </label>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      
+    
+      
+    
       
 
      

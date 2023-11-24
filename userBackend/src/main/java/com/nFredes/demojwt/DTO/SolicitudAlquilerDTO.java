@@ -19,7 +19,7 @@ public class SolicitudAlquilerDTO {
     private double valorPorDia;
     private double valorTotal;
 
-    // Getters y Setters
+    
 
     public int getUsuarioId() {
         return usuarioId;

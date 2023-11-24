@@ -42,7 +42,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(authRequest ->
               authRequest
                 
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/auth/**").permitAll() 
+                .requestMatchers("/api/fileManager/**").permitAll()      
                 .requestMatchers("/user/borrar/**").hasAuthority("ADMIN")
                 .requestMatchers("/user/editar/**").hasAuthority("ADMIN")
                 .requestMatchers("/maquinaria/editar/**").hasAuthority("ADMIN")

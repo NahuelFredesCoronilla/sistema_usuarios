@@ -84,7 +84,7 @@ export class MaquinariaCrudComponent implements OnInit {
           const index = this.maquinarias.findIndex((item: any) => item.id === maquinaria.id);
           if (index !== -1) {
             this.maquinarias.splice(index, 1);
-            this.refreshMaquinariaList();  // Cambiar a refreshMaquinariaList
+            this.refreshMaquinariaList();  
             this.snackBar.open('La maquinaria fue eliminada con éxito','',{duration:5000});
           }
         },
@@ -96,7 +96,7 @@ export class MaquinariaCrudComponent implements OnInit {
     }
   }
 
-  refreshMaquinariaList() {  // Cambiar el nombre de la función
+  refreshMaquinariaList() {  
     this.maquinariaService.getAllMaquinaria().subscribe(resp => {
       this.maquinarias = resp;
       this.dataSource.data = [...this.maquinarias];  

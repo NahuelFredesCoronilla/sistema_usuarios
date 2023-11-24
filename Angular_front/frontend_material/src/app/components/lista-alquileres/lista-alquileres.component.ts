@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlquilerService } from 'src/app/services/alquiler.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { GraficoDuracionComponent } from './grafico-duracion/grafico-duracion.component';
+
 
 @Component({
   selector: 'app-lista-alquileres',
@@ -10,11 +12,12 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class ListaAlquileresComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(GraficoDuracionComponent) graficoComponent: GraficoDuracionComponent | undefined;
+
   alquileres: any[] = [];
   dataSource: MatTableDataSource<any>;
   filterInputValue: string = '';
-
-  
+  datosMaquinaria: any[] = [];
   originalData: any[] = [];
 
   constructor(private alquilerService: AlquilerService) {
@@ -38,14 +41,33 @@ export class ListaAlquileresComponent implements OnInit {
       (alquileres) => {
         this.alquileres = alquileres;
         this.originalData = alquileres;
-        this.dataSource.data = alquileres; 
+        this.dataSource.data = alquileres;
+        
+        
       },
       (error) => {
         console.error('Error al obtener los alquileres:', error);
       }
     );
+   
     this.dataSource.paginator = this.paginator;
+    
+    this.alquilerService.obtenerDuracionTotalPorMaquinarias().subscribe(
+      (datos) => {
+        this.datosMaquinaria = datos;
+        console.log(this.datosMaquinaria);
+        
+        // Actualiza los datos del gráfico en el componente GraficoDuracionComponent
+        if (this.graficoComponent) {
+          this.graficoComponent.actualizarDatos(datos);
+        }
+      },
+      (error) => {
+        console.error('Error al obtener datos de maquinaria:', error);
+      }
+    );
   }
+  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -61,5 +83,7 @@ export class ListaAlquileresComponent implements OnInit {
     }
   }
   
+
+ 
 }
 

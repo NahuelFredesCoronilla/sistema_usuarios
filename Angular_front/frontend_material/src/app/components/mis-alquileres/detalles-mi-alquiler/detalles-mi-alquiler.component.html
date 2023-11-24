@@ -58,6 +58,18 @@
                 <strong>Tipo: </strong>
                 <span>{{ alquiler?.maquinaria?.tipo }}</span>
             </div>
+            <br>
+            <div class="file-upload-container">
+                <input type="file" (change)="onFileSelected($event)">
+                <button [hidden]="!isAdmin" (click)="uploadFileWithAlquiler()" class="upload-button">Subir Archivo con Alquiler</button>
+                <button mat-raised-button color="primary" (click)="getFile()" class="download-button">Descargar Archivo</button>
+              </div>
+              
+             
+              <br>
+            <button [hidden]="!isAdmin" (click)="finalizarAlquiler()"  mat-raised-button
+            color="warn">Finalizar alquiler</button>
+            
         </mat-card-content>
             
         
