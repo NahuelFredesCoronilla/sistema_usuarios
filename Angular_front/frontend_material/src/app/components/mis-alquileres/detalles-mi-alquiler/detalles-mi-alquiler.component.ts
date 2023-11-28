@@ -83,7 +83,7 @@ export class DetallesMiAlquilerComponent {
 
 
   uploadFileWithAlquiler() {
-    const confirmacion = confirm(`¿Estás seguro de que deseas finalizar el alquiler antes de tiempo? `);
+    const confirmacion = confirm(`¿Estás seguro de que quieres subir este archivo? `);
     if (confirmacion) {
     if (this.selectedFile && this.idAlquiler) {
       this.fileService.uploadFileWithAlquiler(this.selectedFile, this.idAlquiler).subscribe(
@@ -115,10 +115,12 @@ export class DetallesMiAlquilerComponent {
         },
         (error) => {
           console.error('Error getting file:', error);
+          this.snackBar.open("Error al descargar documento", 'Error', { duration: 5000 })
         }
       );
     } else {
       console.error('La URL del archivo no está disponible.');
+      this.snackBar.open("Error al descargar documento", 'Error', { duration: 5000 })
     }
   }
 

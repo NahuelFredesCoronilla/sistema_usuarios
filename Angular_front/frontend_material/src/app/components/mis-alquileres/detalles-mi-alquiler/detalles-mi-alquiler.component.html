@@ -60,7 +60,7 @@
             </div>
             <br>
             <div class="file-upload-container">
-                <input type="file" (change)="onFileSelected($event)">
+                <input [hidden]="!isAdmin" type="file" (change)="onFileSelected($event)">
                 <button [hidden]="!isAdmin" (click)="uploadFileWithAlquiler()" class="upload-button">Subir Archivo con Alquiler</button>
                 <button mat-raised-button color="primary" (click)="getFile()" class="download-button">Descargar Archivo</button>
               </div>

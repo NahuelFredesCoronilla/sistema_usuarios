@@ -38,6 +38,7 @@ export class UserService {
 
   public getUsuario(id:any): Observable<any>{
     return this.httpClient.get(this.API_SERVER_GET_ONE+id)
+    .pipe(catchError(this.handleError));
   }
 
   public deleteUsuario(id: any): Observable<any> {

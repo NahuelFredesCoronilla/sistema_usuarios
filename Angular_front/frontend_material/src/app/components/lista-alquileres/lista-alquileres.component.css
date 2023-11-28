@@ -1,18 +1,32 @@
 .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  .crear_maquinaria{
-    margin-top: 10px;
+  font-size: 14px;
+  width: 100%;
 }
-.spacer-elementos{
-    flex:1 1 auto;
+
+.crear_maquinaria {
+  margin-top: 10px;
 }
-.table-responsive{
-    width: 100%;
+
+.spacer-elementos {
+  flex: 1 1 auto;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.table-responsive {
+  width: 100%;
   overflow-x: auto;
 }
-.mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+
+.mat-paginator {
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mat-paginator-container {
+  justify-content: center;
+}

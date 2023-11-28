@@ -8,12 +8,13 @@
         <button [hidden]="!isAdmin" class="crear_maquinaria" mat-raised-button color="primary" routerLink="/crear_maquinaria">Añadir
             Maquinaria</button>
     </mat-toolbar>
-    <div class="table-responsive">
-        <mat-form-field>
-            <mat-label>Filtro</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    <mat-form-field>
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
 
-        </mat-form-field>
+    </mat-form-field>
+    <div class="table-responsive">
+        
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <ng-container matColumnDef="id">

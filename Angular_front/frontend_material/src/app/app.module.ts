@@ -16,7 +16,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 //componentes
 
@@ -40,6 +40,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgChartsModule } from 'ng2-charts';
 import { GraficoDuracionComponent } from './components/lista-alquileres/grafico-duracion/grafico-duracion.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -63,7 +64,8 @@ import { GraficoDuracionComponent } from './components/lista-alquileres/grafico-
     MisAlquileresComponent,
     DetallesMiAlquilerComponent,
     ListaAlquileresComponent,
-    GraficoDuracionComponent
+    GraficoDuracionComponent,
+    
     
     
    
@@ -92,8 +94,10 @@ import { GraficoDuracionComponent } from './components/lista-alquileres/grafico-
     MatNativeDateModule,
     MatCardModule,
     MatPaginatorModule,
+    MatMenuModule,
     NgxChartsModule,
-    NgChartsModule
+    NgChartsModule,
+    FlexLayoutModule
     
   ],
   providers: [AuthService,

@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Token } from '@angular/compiler';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class NavbarComponent implements OnInit {
   isLogoutDisabled: boolean = JSON.parse(localStorage.getItem('isLogoutDisabled') || 'false');
   id!:number;
-  
+  showMenu: boolean = false;
   idLoged!: number;
   user!: User;
   rol!: any
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router, 
     private cdr: ChangeDetectorRef,
-    private userService:UserService) {}
+    private userService:UserService,
+    private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
     //compruebo que el usuario este logueado antes de obtener el id
@@ -49,6 +51,10 @@ export class NavbarComponent implements OnInit {
         }
       );
     }
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
+      .subscribe(result => {
+        this.showMenu = result.matches;
+      });
 }
 
   logout(): void {
@@ -59,4 +65,5 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("token");
     this.router.navigate(["login"]);
   }
+  
 }

@@ -2,12 +2,32 @@
   <mat-toolbar color="primary">
     <span style="font-size: large;">Maquinarias</span>
     <div class="spacer"></div>
-    <button [hidden]="!isLogoutDisabled" [routerLink]="'/maquinaria'" mat-button>Maquinaria</button>
-    <button [hidden]="isAdmin"[hidden]=!isLogoutDisabled [routerLink]="'/mis_alquileres/' + idLoged" mat-button >Mis alquileres</button>
-    <button [hidden]="!isLogoutDisabled" [hidden]="!isAdmin" [routerLink]="'/lista_alquileres'" mat-button >Alquileres</button>
-    <button [hidden]="!isLogoutDisabled" [hidden]="!isAdmin" [routerLink]="'/dashboard'" mat-button >Listado de Usuarios</button>
-    <button [hidden]="!isLogoutDisabled" [hidden]="!isLogoutDisabled" [routerLink]="'/edit/' + idLoged" mat-button >Usuario</button>
-    
-    <button [hidden]="!isLogoutDisabled" (click)="logout()" mat-button>Cerrar sesión</button>
+
+    <!--Pantallas grandes -->
+    <div fxHide.lt-md>
+      <button [hidden]="!isLogoutDisabled" [routerLink]="'/maquinaria'" mat-button>Maquinaria</button>
+      <button  [hidden]="isAdmin" [hidden]="!isLogoutDisabled" [routerLink]="'/mis_alquileres/' + idLoged" mat-button>Mis alquileres</button>
+      <button [hidden]="!isLogoutDisabled" [hidden]="!isAdmin" [routerLink]="'/lista_alquileres'" mat-button>Alquileres</button>
+      <button [hidden]="!isLogoutDisabled" [hidden]="!isAdmin" [routerLink]="'/dashboard'" mat-button>Listado de Usuarios</button>
+      <button [hidden]="!isLogoutDisabled" [routerLink]="'/edit/' + idLoged" mat-button>Usuario</button>
+      <button [hidden]="!isLogoutDisabled" (click)="logout()" mat-button>Cerrar sesión</button>
+    </div>
+
+    <!--Pantallas chicas -->
+    <div  [hidden]="!isLogoutDisabled" fxShow.lt-md>
+     
+      <button  mat-icon-button [matMenuTriggerFor]="menu" [hidden]="!showMenu">
+        <mat-icon >menu</mat-icon>
+      </button>
+      
+      <mat-menu #menu="matMenu">
+        <button [hidden]="!isLogoutDisabled" [routerLink]="'/maquinaria'" mat-button>Maquinaria</button>
+        <button  [hidden]="isAdmin" [hidden]="!isLogoutDisabled" [routerLink]="'/mis_alquileres/' + idLoged" mat-button>Mis alquileres</button>
+        <button [hidden]="!isAdmin" [routerLink]="'/lista_alquileres'" mat-button>Alquileres</button>
+        <button [hidden]="!isAdmin" [routerLink]="'/dashboard'" mat-button>Listado de Usuarios</button>
+        <button [hidden]="!isLogoutDisabled" [routerLink]="'/edit/' + idLoged" mat-button>Usuario</button>
+        <button [hidden]="!isLogoutDisabled" (click)="logout()" mat-button>Cerrar sesión</button>
+      </mat-menu>
+    </div>
   </mat-toolbar>
 </div>

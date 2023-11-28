@@ -35,7 +35,7 @@ isLogoutDisabled: boolean = false;
   login() {
    // Validamos que el usuario ingrese datos
    if (this.loginForm.value.username == '' || this.loginForm.value.password == '') {
-    this.snackBar.open('Todos los campos son obligatorios');
+    this.snackBar.open('Todos los campos son obligatorios','',{ duration: 5000 });
     return
   }
 
